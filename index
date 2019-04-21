@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Let's • Play</title>
+  <title>SimpleDropzone • Demo</title>
   <style>
 html, body {
   text-align: center;
@@ -21,7 +21,7 @@ html, body {
   </style>
 </head>
 <body>
-  <h1>try it out</h1>
+  <h1>SimpleDropzone</h1>
   <div class="dropzone">
     <span class="label">Drag in or select some files.</span>
     <input type="file" multiple class="input">
