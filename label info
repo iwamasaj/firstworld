@@ -1,0 +1,5 @@
+<label style ="font-family:helvetica;font-size:30;text-align:center;">
+<label for ="picture">Select your picture:</label>
+<input type="file"
+       id="picture" name="picture"
+       accept="image/png, image/jpeg">
