@@ -1,22 +1,59 @@
-
-<body style="background-color:DodgerBlue;">
-<h1 style="background-color:DodgerBlue; color:white;font-family:helvetica;font-size:100;text-align:center"> Title</h1>
-
-  <form class="box" method="post" action="" enctype="multipart/form-data">
-  <div class="box__input">
-    <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple />
-    <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label>
-    <button class="box__button" type="submit">Upload</button>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SimpleDropzone • Demo</title>
+  <style>
+html, body {
+  text-align: center;
+}
+.dropzone {
+  background: #f0f0f0;
+  border-radius: 4px;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.list, .info {
+  text-align: left;
+}
+  </style>
+</head>
+<body>
+  <h1>SimpleDropzone</h1>
+  <div class="dropzone">
+    <span class="label">Drag in or select some files.</span>
+    <input type="file" multiple class="input">
   </div>
-  <div class="box__uploading">Uploading&hellip;</div>
-  <div class="box__success">Done!</div>
-  <div class="box__error">Error! <span></span>.</div>
-</form>
+  <div class="info"></div>
+  <ul class="list"></ul>
+  <script type="module">
 
+import { SimpleDropzone } from '../dist/simple-dropzone.module.js';
 
+const dropEl = document.querySelector('.dropzone');
+const inputEl = document.querySelector('.input');
+const infoEl = document.querySelector('.info');
+const listEl = document.querySelector('.list');
 
+const dropzone = new SimpleDropzone(dropEl, inputEl);
 
+dropzone.on('drop', ({files, archive}) => {
+  files = Array.from( files );
+  listEl.innerHTML = files
+    .map(([filename, file]) => `<li>${filename} : ${file.size} bytes</li>`)
+    .join('');
+
+  infoEl.textContent = archive
+    ? `Extracted from ${archive.name} : ${archive.size} bytes`
+    : '';
+});
+
+dropzone.on('droperror', ({message}) => {
+  alert(`Error: ${message}`);
+});
+
+  </script>
 </body>
-
-
-                  
+</html>
