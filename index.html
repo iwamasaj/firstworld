@@ -2,9 +2,14 @@
 <p style="font-family:courier;">this is a paragraph,</p>
 
 
-<label style ="font-family:helvetica;font-size:30;text-align:center;">
-<label for ="picture">Select your picture:</label>
-<input type="file"
-       id="picture" name="picture"
-       accept="image/png, image/jpeg">
+<form class="box"="post" action="" enctype="multipart/form-data">
+       <div class="box_input">
+              <input class="box_file" type="file" name="files[]" id+"file" data-multiple0caption="{count} files selected" multiple/>
+              <button class="box_button"type="submit">Upload</button>
+              <label for="file><strong>Choose a file </strong><span class="box_dragndrop:> or drag it here</span>.</label>
+       </div>
+<div class = "box_uploading"> Uploading &hellip;</div>
+<div class="box_success">Done!</div>
+<div class="box_error">Error!<span></span>.</div>
+</form>
                                      
